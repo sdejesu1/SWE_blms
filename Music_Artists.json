@@ -1,0 +1,535 @@
+{
+  "spotify_artists" : [
+ {
+   "Artist Name": "Taylor Swift",
+   "Location": "United States",
+   "Songs": [
+      {
+        "Name":"Cruel Summer"
+      },
+      {
+        "Name":"Is It Over Now?"
+      },
+      {
+        "Name":"Anti-Hero"
+      }
+    ],
+   "Genre": ["Country", "Pop"],
+   "Start Of Career": 2005,
+   "End of Career": null
+ },
+ {
+   "Artist Name": "Lana Del Rey",
+   "Location": "United States",
+   "Songs": [
+      {
+        "Name":"Summertime Sadness"
+      },
+      {
+        "Name":"Say Yes to Heaven"
+      },
+      {
+        "Name":" Young And Beautiful"
+      }
+    ],
+   "Genre": ["Alternative Pop", "Rock", "Pop"],
+   "Start Of Career": 2010,
+   "End of Career": null
+ },
+ {
+   "Artist Name": "The Lumineers",
+   "Location": "United States",
+
+   "Songs": "Ophelia, Ho Hey, Spotless (Feat. The Lumineers)",
+   "Genre": ["Indie Folk", "Folk Rock", "Americana"],
+   "Start Of Career": 2009,
+   "End of Career": null
+ },
+ {
+   "Artist Name": "Halsey",
+   "Location": "United States",
+   "Songs": [
+      {
+        "Name":"Closer"
+      },
+      {
+        "Name":"Without Me"
+      },
+      {
+        "Name":"Eastside (With Halsey & Khalid)"
+      }
+    ],
+   "Genre": ["Pop", "Electronic", "Alternative Pop"],
+   "Start Of Career": 2013,
+   "End of Career": null
+ },
+ {
+   "Artist Name": "ABBA",
+   "Location": "Sweden",
+   "Songs": [
+      {
+        "Name":"Dancing Queen"
+      },
+      {
+        "Name":"Gimme! Gimme! Gimme! (A Man After Midnight)"
+      },
+      {
+        "Name":"Lay All Your Love On Me"
+      }
+    ],
+   "Genre": ["Pop"],
+   "Start Of Career": 1972,
+   "End of Career": 1982
+ },
+ {
+   "Artist Name": "One Direction",
+   "Location": "United Kingdom",
+   "Songs": [
+      {
+        "Name":"Night ChangeS"
+      },
+      {
+        "Name":"What Makes You Beautiful"
+      },
+      {
+        "Name":"Story Of My Life"
+      }
+    ],
+   "Genre": ["Pop", "Pop Rock"],
+   "Start Of Career": 2010,
+   "End of Career": 2016
+ },
+ {
+   "Artist Name": "Miley Cyrus",
+   "Location": "United States",
+   "Songs": [
+      {
+        "Name":"Flowers"
+      },
+      {
+        "Name":"Party In The U.S.A"
+      },
+      {
+        "Name":"We Can't Stop"
+      }
+    ],
+   "Genre": ["Pop"],
+   "Start Of Career": 2007,
+   "End of Career": null
+ },
+ {
+   "Artist Name": "Harry Styles",
+   "Location": "United Kingdom",
+   "Songs": [
+      {
+        "Name":"As It Was"
+      },
+      {
+        "Name":"Watermelon Sugar"
+      },
+      {
+        "Name":"Adore You"
+      }
+    ],
+   "Genre": ["Pop"],
+   "Start Of Career": 2010,
+   "End of Career": null
+ },
+ {
+   "Artist Name": "The Beatles",
+   "Location": "United Kingdom",
+   "Songs": [
+      {
+        "Name":"Here Comes The Sun - Remastered 2009"
+      },
+      {
+        "Name":"Come Together  - Remastered 2009"
+      },
+      {
+        "Name":"Let it Be  - Remastered 2009"
+      }
+    ],
+   "Genre": ["Rock", "MerseyBeat", "Classic Rock", "British Invasion"],
+   "Start Of Career": 1960,
+   "End of Career": 1970
+ },
+ {
+   "Artist Name": "Bob Marley",
+   "Location": "Jamaica",
+   "Songs": [
+      {
+        "Name":"Three Little Birds"
+      },
+      {
+        "Name":"Could You Be Loved"
+      },
+      {
+        "Name":"Is This Love"
+      }
+    ],
+   "Genre": ["Reggae"],
+   "Start Of Career": 1962,
+   "End of Career": 1980
+ },
+ {
+   "Artist Name": "Whitney Houston",
+   "Location": "United States",
+   "Songs": [
+      {
+        "Name":"I Wanna Dance with Somebody (Who Loves Me)"
+      },
+      {
+        "Name":"Higher Love"
+      },
+      {
+        "Name":"I WIll Always Love You"
+      }
+    ],
+   "Genre": ["Pop", "Dance Pop"],
+   "Start Of Career": 1977,
+   "End of Career": 2012
+ },
+ {
+   "Artist Name": "Elvis Presley",
+   "Location": "United States",
+   "Songs": [
+      {
+        "Name":"Can't Help Falling In Love"
+      },
+      {
+        "Name":"Jailhouse Rock"
+      },
+      {
+        "Name":"Suspicious Minds"
+      }
+    ],
+   "Genre": ["Rockabilly", "Rock-and-Roll"],
+   "Start Of Career": 1953,
+   "End of Career": 1977
+ },
+ {
+   "Artist Name": "Micheal Jackson",
+   "Location": "United States",
+   "Songs": [
+      {
+        "Name":"Billie Jean"
+      },
+      {
+        "Name":"Beat it"
+      },
+      {
+        "Name":"Smoth Criminal - 2012 Remaster"
+      }
+    ],
+   "Genre": "Soul, R&B",
+   "Start Of Career": 1964,
+   "End of Career": 2009
+ },
+ {
+   "Artist Name": "Bad Bunny",
+   "Location": "Puerto Rico",
+   "Songs": [
+      {
+        "Name":"PERRO NEGRO"
+      },
+      {
+        "Name":"MONACO"
+      },
+      {
+        "Name":"un x100to"
+      }
+    ],
+   "Genre": ["Reggaeton", "Pop", "Hip Hop/Rap"],
+   "Start Of Career": 2013,
+   "End of Career": null
+ },
+ {
+   "Artist Name": "The Weeknd",
+   "Location": "Canada",
+   "Songs": [
+      {
+        "Name":"One Of The Girls,"
+      },
+      {
+        "Name":"Popular"
+      },
+      {
+        "Name":"Starboy"
+      }
+    ],
+   "Genre": ["Alternative", "R&B", "Pop"],
+   "Start Of Career": 2010,
+   "End of Career": null
+ },
+ {
+   "Artist Name": "Drake",
+   "Location": "Canada",
+   "Songs": [
+      {
+        "Name":"IDGAF"
+      },
+      {
+        "Name":"Rich Baby Daddy"
+      },
+      {
+        "Name":"First Person Shooter"
+      }
+    ],
+   "Genre": ["R&B", "Hip Hop/Rap", "Dancehall"],
+   "Start Of Career": 2006,
+   "End of Career": null
+ },
+ {
+   "Artist Name": "Yeat",
+   "Location": "United States",
+   "Songs": [
+      {
+        "Name":"IDGAF"
+      },
+      {
+        "Name":"Out thë way"
+      },
+      {
+        "Name":"Flawlëss"
+      }
+    ],
+   "Genre": "Hip Hop/Rap, Punk Rap",
+   "Start Of Career": 2015,
+   "End of Career": null
+ },
+ {
+   "Artist Name": "Travis Scott",
+   "Location": "United States",
+   "Songs": [
+      {
+        "Name":"Water - Remix"
+      },
+      {
+        "Name":"I KNOW ?"
+      },
+      {
+        "Name":"FE!N"
+      }
+    ],
+   "Genre": ["Hip Hop/Rap"],
+   "Start Of Career": 2013,
+   "End of Career": null
+ },
+ {
+   "Artist Name": "KAROL G",
+   "Location": "Colombia",
+   "Songs": [
+      {
+        "Name":"QLONA"
+      },
+      {
+        "Name":"AMARGURA"
+      },
+      {
+        "Name":"MI EX TENÍA RAZÓN"
+      }
+    ],
+   "Genre": ["Pop", "R&B", "Hip Hop/Rap"],
+   "Start Of Career": 2006,
+   "End of Career": null
+ },
+ {
+   "Artist Name": "21 Savage",
+   "Location": "United States",
+   "Songs": [
+      {
+        "Name":"redrum"
+      },
+      {
+        "Name":"Creepin"
+      },
+      {
+        "Name":"née-nah"
+      }
+    ],
+   "Genre": ["Hip Hop/Rap"],
+   "Start Of Career": 2013,
+   "End of Career": null
+ },
+ {
+   "Artist Name": "Nipsey Hussle",
+   "Location": "United States",
+"Songs": [
+     {
+       "Name":"Grinding All My Life"
+     },
+     {
+       "Name":"Last Time That I Checc'd"
+     },
+     {
+       "Name":"Double Up"
+     }
+   ],
+   "Genre": ["Hip Hop/Rap"],
+   "Start Of Career": 2005,
+   "End of Career": 2019
+ },
+ {
+   "Artist Name": "Aerosmith",
+   "Location": "United States",
+"Songs": [
+   {
+     "Name":"Dream On"
+   },
+   {
+     "Name":"I Don't Want To Miss A Thing"
+   },
+   {
+     "Name":"Walk This Way"
+   }
+ ],
+   "Genre": ["Rock", "Heavy Metal", "Pop Rock"],
+   "Start Of Career": 1970,
+   "End of Career": 2024
+ },
+ {
+   "Artist Name": "Guns and Roses",
+   "Location": "United States",
+ "Songs": [
+   {
+     "Name":"Sweet Child O' Mine"
+   },
+   {
+     "Name":"Welcome To The Jungle"
+   },
+   {
+     "Name":"Paradise City"
+   }
+ ],
+   "Genre": ["Rock", "Heavy Metal"],
+   "Start Of Career": 1985,
+   "End of Career": 2019
+ },
+ {
+   "Artist Name": "Frank Sinatra",
+   "Location": "United States",
+ "Songs": [
+   {
+     "Name":"Let It Snow! Let It Snow! let It Snow!"
+   },
+   {
+     "Name":"Jingle Bells"
+   },
+   {
+     "Name":"Somethin' Stupid"
+   }
+ ],
+   "Genre": "Pop, Jazz, Swing",
+   "Start Of Career": 1915,
+   "End of Career": 1998
+ },
+ {
+   "Artist Name": "The Beach Boys",
+   "Location": "United States",
+"Songs": [
+   {
+     "Name":"Little Saint Nick"
+   },
+   {
+     "Name":"Wouldn't It Be Nice"
+   },
+   {
+     "Name":"Surfin' U.S.A"
+   }
+ ],
+   "Genre": ["american pop", "surf rock"],
+   "Start Of Career": 1961,
+   "End of Career": 1998
+ },
+ {
+   "Artist Name": "Styx",
+   "Location": "United States",
+ "Songs": [
+   {
+     "Name":"Renegade"
+   },
+   {
+     "Name":"Babe"
+   },
+   {
+     "Name":"Come Sail Away"
+   }
+ ],
+   "Genre": ["Hard Rock", "Progressive Rock", "Art Rock"],
+   "Start Of Career": 1970,
+   "End of Career": 1999
+ },
+ {
+   "Artist Name": "Queen",
+   "Location": "United Kingdom",
+"Songs": [
+   {
+     "Name":"Don't Stop Me Now"
+   },
+   {
+     "Name":"Bohemian Rhapsody"
+   },
+   {
+     "Name":"Another One Bites The Dust"
+   }
+ ],
+   "Genre": ["Heavy metal", "Glam Rock"],
+   "Start Of Career": 1970,
+   "End of Career": null
+ },
+ {
+   "Artist Name": "Randy Newman",
+   "Location": "United States",
+"Songs": [
+   {
+     "Name":"You've Got a Friend in Me"
+   },
+   {
+     "Name":" 'Monsters, Inc.' "
+   },
+   {
+     "Name":"I Can't Let You Throw Yourself Away"
+   }
+ ],
+   "Genre": ["Piano Rock", "Soft Rock", "Roots Rock"],
+   "Start Of Career": 1943,
+   "End of Career": null
+ },
+ {
+   "Artist Name": "Shakira",
+   "Location": "Columbia",
+ "Songs": [
+   {
+     "Name":"Hips Don't Lie (feat. Wyclef Jean)"
+   },
+   {
+     "Name":"Chantaje (feat. Maluma)"
+   },
+   {
+     "Name":"TQG"
+   }
+ ],
+   "Genre": ["Pop", "Latin pop", "Dance Pop"],
+   "Start Of Career": 1990,
+   "End of Career": null
+ },
+ {
+   "Artist Name": "Bruno Mars",
+   "Location": "United States",
+ "Songs": [
+   {
+     "Name":"Locked Out of Heaven"
+   },
+   {
+     "Name":"Just the Way You Are"
+   },
+   {
+     "Name":"When I Was Your Man"
+   }
+ ],
+   "Genre": ["Pop", "R&B", "Soul"],
+   "Start Of Career": 2004,
+   "End of Career": null
+ }
+]
+}
