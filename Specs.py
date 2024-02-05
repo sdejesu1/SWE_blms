@@ -30,6 +30,10 @@ def query_validater(dictionary_query):
                 (key.lower() == 'all') or (key.lower() == 'help') or (key.lower() == 'quit'):
             if key == "get" and key_num == 0:
                 isvalid = True
+            if key_num == 1 and key != "if":
+                isvalid = False
+            if key_num == 2 and key != ">>" and key != "<<" and key != "<=" and key != ">=" and key != "==":
+                isvalid = False
         else:
             isvalid = False
         key_num = key_num + 1
