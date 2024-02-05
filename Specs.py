@@ -24,11 +24,14 @@ def parse_query(user_input):
 def query_validater(dictionary_query):
     isvalid = False
     key_num = 0
+    print(len(dictionary_query))
     for key in dictionary_query.keys():
-        if (key.lower() == 'get') or (key.lower() == 'if') or (key.lower() == '==') or (key.lower() == '&&') or \
+        if len(dictionary_query) == 2:
+            isvalid = False
+        elif (key.lower() == 'get') or (key.lower() == 'if') or (key.lower() == '==') or (key.lower() == '&&') or \
                 (key.lower() == '>>') or (key.lower() == '<<') or (key.lower() == '<=') or (key.lower() == '>=') or \
                 (key.lower() == 'all') or (key.lower() == 'help') or (key.lower() == 'quit'):
-            if key == "get" and key_num == 0:
+            if key_num == 0 and key == "get":
                 isvalid = True
             if key_num == 1 and key != "if":
                 isvalid = False
