@@ -11,6 +11,14 @@ db = firestore.client()
 
 music_ref = db.collection("test-music")
 
-query = music_ref.where(filter=FieldFilter("Artist Name", "==", "Bad Bunny")).stream()
-for queue in query:
-    print(queue)
+query = music_ref.where(filter=FieldFilter("Artist Name", "==", "Bad Bunny"))
+
+
+queries = (
+    music_ref
+    .where(filter=FieldFilter("`Start Of Career`", "==", 2013))
+    .stream()
+)
+
+for query in queries:
+    print(f"{query.id} => {query.to_dict()}")
