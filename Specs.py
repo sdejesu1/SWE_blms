@@ -19,8 +19,10 @@ def parse_query(user_input):
     return dictionary_query
 
 
-# This function takes in the dictionary and validates all the key values and elements
-# It returns a boolean value if it is valid or not
+# This function takes in the dictionary and validates all the key values and elements It returns a boolean value if
+# it is valid or not NOTE This still needs validation for when the user enters an && statement. and statements can
+# only be made at every even number key after 3, this also means that every odd number key after 4 must be a
+# comparison key
 def query_validater(dictionary_query):
     isvalid = False
     key_num = 0
