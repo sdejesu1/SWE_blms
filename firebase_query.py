@@ -11,14 +11,36 @@ db = firestore.client()
 
 music_ref = db.collection("test-music")
 
-query = music_ref.where(filter=FieldFilter("Artist Name", "==", "Bad Bunny"))
+# test arrays - remaining test arrays: compound queries (AND)
+generic_array = ["Artist Name", "Location", "==", "Canada"]
+song_array = ["Artist Name", "Songs", "==", "Beat it"]
+genre_array = ["Artist Name", "Genre", "==", "Pop"]
 
 
-queries = (
-    music_ref
-    .where(filter=FieldFilter("`Start Of Career`", "==", 2013))
-    .stream()
-)
+# function for user data
+def querying_user_data(user_data):
+    # if statement for second element, which would have either song or genre. Here, we'll have contains
+    # as a conditional to select all records which contain some of the user input, such as an incomplete song or genre
+    if user_data[1] == "Songs" or user_data[1] == "Genre":
+        queries = (
+            music_ref
+            .where(filter=FieldFilter("`" + user_data[1] + "`", "array_contains_any", [user_data[3]]))
+            .stream()
+        )
+        for query in queries:
+            query_dict = query.to_dict()
+            print(query_dict[user_data[0]])
 
-for query in queries:
-    print(f"{query.id} => {query.to_dict()}")
+    else:
+        queries = (
+            music_ref
+            .where(filter=FieldFilter("`" + user_data[1] + "`", user_data[2], user_data[3]))
+            .stream()
+        )
+
+        for query in queries:
+            query_dict = query.to_dict()
+            print(query_dict[user_data[0]])
+
+
+querying_user_data(song_array)
