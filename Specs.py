@@ -5,7 +5,7 @@ def get_user_input():
 
 
 # This function splits the users input by spaces and adds it to a dictionary
-# such that the first input is the key and the second is the element and it
+# such that the first input is the key and the second is the element, and it
 # alternates in that pattern
 # this function returns the dictionary
 def parse_query(user_input):
@@ -13,7 +13,7 @@ def parse_query(user_input):
     print(parsed_input)
     dictionary_query = {}
     for x in range(0, len(parsed_input)-1, 2):
-        dictionary_query.update({parsed_input[x]:parsed_input[x+1]})
+        dictionary_query.update({parsed_input[x]: parsed_input[x+1]})
         print(dictionary_query)
     print(query_validater(dictionary_query))
     return dictionary_query
