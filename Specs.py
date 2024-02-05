@@ -43,7 +43,20 @@ looper = True
 while looper:
     user_input = get_user_input()
     if user_input.lower() == "help":
-        print('help notes')
+        print('The following are they key words you can use to query with')
+        print('Entering "get" followed by the name of the column you wish to search through')
+        print('Entering "if" after a get statements will return all data that meets the condition you have defined')
+        print('Entering "==" checks to see if something is equal to another, this should only be used after an if '
+              'statement')
+        print('Entering "&&" allows you to add another if condition to an existing one')
+        print('Entering "<<", ">>", "<=", or ">=" comparing operators allows you to get items that are less than, '
+              'greater than, less than or equal to, or greater than or equal to')
+        print('Entering "all" allows the user to get all fo the data')
+        print('Entering "help" gives the current menu')
+        print('Entering "quit" ends the program')
+        print('here are some example queries')
+        print('get artist if name == "aerosmith"')
+        print('get artist if end_date >> 2000 && start_date << 1990')
     elif user_input.lower() == "quit":
         print('Quitting...')
         looper = False
