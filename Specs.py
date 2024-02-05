@@ -23,13 +23,17 @@ def parse_query(user_input):
 # It returns a boolean value if it is valid or not
 def query_validater(dictionary_query):
     isvalid = False
+    key_num = 0
     for key in dictionary_query.keys():
         if (key.lower() == 'get') or (key.lower() == 'if') or (key.lower() == '==') or (key.lower() == '&&') or \
                 (key.lower() == '>>') or (key.lower() == '<<') or (key.lower() == '<=') or (key.lower() == '>=') or \
                 (key.lower() == 'all') or (key.lower() == 'help') or (key.lower() == 'quit'):
-            isvalid = True
+            if key == "get" and key_num == 0:
+                isvalid = True
         else:
             isvalid = False
+        key_num = key_num + 1
+
     return isvalid
 
 
