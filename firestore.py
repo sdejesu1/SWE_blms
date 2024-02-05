@@ -23,7 +23,7 @@ app = firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 #Delete old firebase
-delete_collection("test-music", 30)
+delete_collection(db.collection("test-music"), 120)
 
 
 # Open JSON File with explicit encoding
