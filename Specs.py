@@ -4,6 +4,53 @@ def get_user_input():
     return user_input
 
 
+# This function is an alternate version of the parse_query. this one uses a list with a list of two inside it.
+# This way we can have two of the same keys
+def parse_query_double_list(user_input):
+    parsed_input = user_input.split(" ")
+    print(parsed_input)
+    # if len(parsed_input) % 2 != 0:
+    #     print("your queries should not have an odd number of words, verify that you have finished your statement")
+    #     return None
+    # if len(parsed_input) == 4:
+    #     if parsed_input[3] == "if":
+    #         print("your if you have an if statement you must also have a conditional statement")
+    #     else:
+    #         print("if you wish to narrow down your query use an if statement")
+    #     return None
+    query_list = []
+    for x in range(0, len(parsed_input) - 1, 2):
+        query_list.append([parsed_input[x], parsed_input[x+1]])
+    print(query_list)
+    return double_list_validator(query_list)
+
+
+# alternate validator code for the double list query
+def double_list_validator(query_list):
+    isvalid = False
+    key_num = 0
+    for x in query_list:
+        if (x[0] == 'get') or (x[0] == 'if') or (x[0] == '==') or (x[0] == '&&') or \
+                (x[0] == '>>') or (x[0] == '<<') or (x[0] == '<=') or (x[0] == '>=') or \
+                (x[0] == 'all') or (x[0] == 'help') or (x[0] == 'quit'):
+            if key_num == 0 and x[0] == "get":
+                isvalid = True
+            if key_num == 1 and x[0] != "if":
+                isvalid = False
+            if key_num == 2 and x[0] != ">>" and x[0] != "<<" and x[0] != "<=" and x[0] != ">=" and x[0] != "==":
+                isvalid = False
+            if x[0] == "&&" and (key_num + 1) % 2 != 0 and key_num > 3:
+                isvalid = False
+            if x[0] != ">>" and x[0] != "<<" and x[0] != "<=" and x[0] != ">=" and x[0] != "==" and (key_num+1) % 2 == 0 and key_num > 4:
+                isvalid = False
+        else:
+            isvalid = False
+        key_num = key_num + 1
+    if (key_num + 1) % 2 != 0:
+        isvalid = False
+    return isvalid
+
+
 # This function splits the users input by spaces and adds it to a dictionary
 # such that the first input is the key and the second is the element, and it
 # alternates in that pattern
@@ -77,5 +124,5 @@ while looper:
         print('Quitting...')
         looper = False
     else:
-        parse = parse_query(user_input)
+        parse = parse_query_double_list(user_input)
         print(parse)
