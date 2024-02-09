@@ -22,7 +22,7 @@ def parse_query_double_list(user_input):
     for x in range(0, len(parsed_input) - 1, 2):
         query_list.append([parsed_input[x], parsed_input[x+1]])
     print(query_list)
-    return double_list_validator(query_list)
+    return query_list
 
 
 # alternate validator code for the double list query
@@ -100,6 +100,20 @@ def query_validater(dictionary_query):
 def execute_query():
     return "results of the query execution"
 
+def pass_query(parse):
+    mod_parse = []
+    for x in parse:
+        if x[0] == "get":
+            mod_parse.append(x[1])
+        if x[0] == "if":
+            mod_parse.append([x[1]])
+        if x[0] == "&&":
+            mod_parse.append([x[1]])
+        if x[0] == "==" or x[0] == "<<" or x[0] == ">>" or x[0] == "<=" or x[0] == ">=":
+            mod_parse.append([x[0], x[1]])
+    return mod_parse
+
+
 
 # the following code runs the code above
 looper = True
@@ -125,4 +139,9 @@ while looper:
         looper = False
     else:
         parse = parse_query_double_list(user_input)
-        print(parse)
+        if double_list_validator(parse):
+        #parse = parse_query(user_input)
+            print(double_list_validator(parse))
+            print(parse)
+            passer = pass_query(parse)
+            print(passer)
