@@ -115,16 +115,29 @@ def pass_query(parse, previous=None):
             mod_parse.append(x[0])
             mod_parse.append(x[1])
     print(mod_parse)
-    newList1 = []
-    newList2 =[]
-    finalList = [mod_parse[0], newList1, newList2]
+    finalList = []
+    conditional_statements = 0
+    for x in mod_parse:
+        finalList.append(x)
+    for x in parse:
+        if x[0] == "if" or x[0] == "&&":
+            finalList.append([])
+            conditional_statements = conditional_statements + 1
     i = 0
-    for x in mod_parse[1:]:
-        if i <= 2:
-            newList1.append(x)
-        if i > 2:
-            newList2.append(x)
-        i = i + 1
+    for x in mod_parse:
+        while i <= 2:
+            i = i + 1
+    # newList1 = []
+    # newList2 =[]
+    # finalList = [mod_parse[0], newList1, newList2]
+    # i = 0
+    # for x in mod_parse[1:]:
+    #     if i <= 2:
+    #         newList1.append(x)
+    #     if i > 2:
+    #         newList2.append(x)
+    #     i = i + 1
+    print(finalList)
     return finalList
 
 
