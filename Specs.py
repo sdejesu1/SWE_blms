@@ -124,9 +124,16 @@ def pass_query(parse, previous=None):
             finalList.append([])
             conditional_statements = conditional_statements + 1
     i = 0
-    for x in mod_parse:
-        while i <= 2:
-            i = i + 1
+    print("length of mod_parse[1:]")
+    print(len(mod_parse[1:]))
+    print(mod_parse[1:][1])
+    looper = 0
+    while looper <= 2:
+        adder = mod_parse[1:][looper]
+        finalList[7].append(adder)
+        looper = looper + 1
+    #for x in mod_parse[1:]:
+
     # newList1 = []
     # newList2 =[]
     # finalList = [mod_parse[0], newList1, newList2]
