@@ -100,18 +100,32 @@ def query_validater(dictionary_query):
 def execute_query():
     return "results of the query execution"
 
-def pass_query(parse):
+def pass_query(parse, previous=None):
     mod_parse = []
     for x in parse:
         if x[0] == "get":
             mod_parse.append(x[1])
         if x[0] == "if":
-            mod_parse.append([x[1]])
+            mod_parse.append(x[1])
+            previous_val = x[1]
         if x[0] == "&&":
-            mod_parse.append([x[1]])
+            mod_parse.append(x[1])
+            previous_val = x[1]
         if x[0] == "==" or x[0] == "<<" or x[0] == ">>" or x[0] == "<=" or x[0] == ">=":
-            mod_parse.append([x[0], x[1]])
-    return mod_parse
+            mod_parse.append(x[0])
+            mod_parse.append(x[1])
+    print(mod_parse)
+    newList1 = []
+    newList2 =[]
+    finalList = [mod_parse[0], newList1, newList2]
+    i = 0
+    for x in mod_parse[1:]:
+        if i <= 2:
+            newList1.append(x)
+        if i > 2:
+            newList2.append(x)
+        i = i + 1
+    return finalList
 
 
 
