@@ -131,10 +131,14 @@ def pass_query(parse, previous=None):
     print(mod_parse[1:][1])
     print(conditional_statements)
     print(finalFinalList)
+    x = 0
     for y in range(conditional_statements):
-        for x in range(conditional_statements + 1):
+        x_counter = 0
+        while x_counter < conditional_statements + 1:
             adder = mod_parse[1:][x]
             finalFinalList[1:][y].append(adder)
+            x_counter = x_counter + 1
+            x = x + 1
     print(finalFinalList)
     # looper = 0
     # while looper <= 2:
