@@ -87,6 +87,3 @@ def querying_user_data(user_data):
     if user_data[0] != 'all':
         list_info = list(set(list_info))
         print(f"{user_data[0].capitalize()}s: {list_info}")
-
-querying_user_data(genre_array)
-
