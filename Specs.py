@@ -124,7 +124,10 @@ def quote_remover(mylist):
         if isinstance(x, list):
             finalQuery.append(quote_remover(x))
         else:
-            finalQuery.append(x.replace("'", "").replace('"', ''))
+            if x.isdigit():
+                finalQuery.append(int(x))
+            else:
+                finalQuery.append(x.replace("'", "").replace('"', ''))
     return finalQuery
 
 
