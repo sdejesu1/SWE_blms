@@ -8,7 +8,7 @@ from google.cloud.firestore_v1 import FieldFilter
 
 # # test arrays - remaining test arrays: compound queries (AND)
 #generic_array = ["all", [["start of career", "==", 2006]]]
-generic_array = ['all', ['artist name', '==', 'drake']]
+#generic_array = ['all', ['artist name', '==', 'drake']]
 #
 # #compound_generic_array = ["Artist Name", "Location"]
 # song_array = ["Artist Name", [["Songs", "==", "Beat it"]]]
@@ -18,8 +18,8 @@ generic_array = ['all', ['artist name', '==', 'drake']]
 # function for user data
 def querying_user_data(user_data):
     # Set up Firestore
-    cred = credentials.Certificate('soft-eng-warmup-a838c198caa2.json')
-    app = firebase_admin.initialize_app(cred)
+    # cred = credentials.Certificate('soft-eng-warmup-a838c198caa2.json')
+    # app = firebase_admin.initialize_app(cred)
     db = firestore.client()
 
     music_ref = db.collection("test-music")
@@ -86,5 +86,5 @@ def querying_user_data(user_data):
         print(f"{user_data[0].capitalize()}s: {list_info}")
 
 
-querying_user_data(generic_array)
+#querying_user_data(generic_array)
 
