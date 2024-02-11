@@ -98,20 +98,20 @@ def pass_query(parse):
             mod_parse.append(x[1])
     conditional_statements = 0
     for x in mod_parse:
-        FinalList = [mod_parse[0]]
+        finalList = [mod_parse[0]]
     for x in parse:
         if x[0] == "if" or x[0] == "&&":
-            FinalList.append([])
+            finalList.append([])
             conditional_statements = conditional_statements + 1
     x = 0
     for y in range(conditional_statements):
         x_counter = 0
         while x_counter < 3:
             adder = mod_parse[1:][x]
-            FinalList[1:][y].append(adder)
+            finalList[1:][y].append(adder)
             x_counter = x_counter + 1
             x = x + 1
-    return FinalList
+    return finalList
 
 
 # the following code runs the code above
