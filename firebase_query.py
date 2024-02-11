@@ -4,24 +4,26 @@ import json
 
 from google.cloud.firestore_v1 import FieldFilter
 
-# Set up Firestore
-cred = credentials.Certificate('soft-eng-warmup-a838c198caa2.json')
-app = firebase_admin.initialize_app(cred)
-db = firestore.client()
 
-music_ref = db.collection("test-music")
 
-# test arrays - remaining test arrays: compound queries (AND)
-generic_array = ["all", [["start of career", "==", 2006]]]
-#generic_array = ["Artist Name", [["Location", "==", "Canada"], ["Name", "==", "Drake"]]]
-
-#compound_generic_array = ["Artist Name", "Location"]
-song_array = ["songs", [["songs", "==", "beat it"]]]
-genre_array = ["artist name", [["genre", "==", "pop"]]]
+# # test arrays - remaining test arrays: compound queries (AND)
+#generic_array = ["all", [["start of career", "==", 2006]]]
+generic_array = ["all", [["location", "==", "canada"], ["artist name", "==", "drake"]]]
+#
+# #compound_generic_array = ["Artist Name", "Location"]
+# song_array = ["Artist Name", [["Songs", "==", "Beat it"]]]
+#genre_array = ["artist name", [["genre", "==", "pop"]]]
 
 
 # function for user data
 def querying_user_data(user_data):
+    # Set up Firestore
+    cred = credentials.Certificate('soft-eng-warmup-a838c198caa2.json')
+    app = firebase_admin.initialize_app(cred)
+    db = firestore.client()
+
+    music_ref = db.collection("test-music")
+
     # if statement for second element, which would have either song or genre. Here, we'll have contains
     # as a conditional to select all records which contain some of the user input, such as an incomplete song or genre
 
@@ -52,11 +54,11 @@ def querying_user_data(user_data):
         #print(queries)
 
     queries = queries.stream()
+    list_info = []
     for query in queries:
         query_dict = query.to_dict()
         #print(query_dict)
         if user_data[0] == 'all':
-            print("\n")
             for key in query_dict:
                 if key != "end of career" and key != "start of career":
                     if isinstance(query_dict[key], str):
@@ -68,12 +70,20 @@ def querying_user_data(user_data):
                         print(key.capitalize() + ": " + str(query_dict[key]))
                 elif key == "end of career" or key == "start of career":
                     print(key.capitalize() + ": " + str(query_dict[key]))
+            print("\n")
         else:
-            if isinstance(query_dict[user_data[0]], str):
-                print(user_data[0].capitalize() + ": " + query_dict[user_data[0]].title())
-            elif isinstance(query_dict[user_data[0]], list):
-                capitalized_list = [word.title() for word in query_dict[user_data[0]]]
-                print(user_data[0].capitalize() + ": " + str(capitalized_list))
+            try:
+                data = ""
+                for word in query_dict[user_data[0]].split(" "):
+                    data += f"{word.capitalize()}"
+                list_info.append(data)
+            except AttributeError:
+                for info in query_dict[user_data[0]]:
+                    list_info.append(info.capitalize())
 
+    if user_data[0] != 'all':
+        list_info = list(set(list_info))
+        print(f"{user_data[0].capitalize()}s: {list_info}")
 
 querying_user_data(generic_array)
+

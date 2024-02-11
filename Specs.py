@@ -1,4 +1,7 @@
 import re
+import firestore
+import firebase_query as fq
+
 # This function gets the users input and returns it
 def get_user_input():
     user_input = input(">> ")
@@ -157,7 +160,8 @@ def main():
                 passer = pass_query(parse)
                 passer = quote_remover(passer)
                 print(passer)
-
+                fq.querying_user_data(passer)
 
 if __name__ == '__main__':
+    firestore.create_database('Music_Artist.json')
     main()
