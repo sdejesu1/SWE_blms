@@ -137,6 +137,14 @@ def quote_remover(mylist):
 
 # the following code runs the code above
 def main():
+    #introduction to program
+    print("\nHello All! Welcome to our collection of information about some of spotify's top artists:")
+    #categories and keys
+    print('\nThe Categories are: "Artist Name", "Location", "Songs", "Genre", "Start of Career", and "End of Career"')
+    print('The Keys are: get, if, ==, &&, <, >, <=, >=, all')
+    print('------------------------------')
+    print('Please enter your query now, type "help" to see your options, or "quit" to close the program:')
+
     looper = True
     while looper:
         user_input = get_user_input()
@@ -147,7 +155,7 @@ def main():
             print('Entering "==" checks to see if something is equal to another, this should only be used after an if '
                   'statement')
             print('Entering "&&" allows you to add another if condition to an existing one')
-            print('Entering "<<", ">>", "<=", or ">=" comparing operators allows you to get items that are less than, '
+            print('Entering "<", ">", "<=", or ">=" comparing operators allows you to get items that are less than, '
                   'greater than, less than or equal to, or greater than or equal to')
             print('Entering "all" allows the user to get all of the data')
             print('Entering "help" gives the current menu')
