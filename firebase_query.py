@@ -8,7 +8,7 @@ from google.cloud.firestore_v1 import FieldFilter
 
 # # test arrays - remaining test arrays: compound queries (AND)
 #generic_array = ["all", [["start of career", "==", 2006]]]
-generic_array = ["artist name", [["location", "==", "canada"], ["genre", "==", "hip hop/rap"]]]
+generic_array = ["artist name", [["location", "==", "canada"], ["start of career", ">", 2000]]]
 #
 # #compound_generic_array = ["Artist Name", "Location"]
 # song_array = ["Artist Name", [["Songs", "==", "Beat it"]]]
