@@ -12,12 +12,12 @@ db = firestore.client()
 music_ref = db.collection("test-music")
 
 # test arrays - remaining test arrays: compound queries (AND)
-generic_array = [["artist name", "location"], [["start of career", "==", 2006]]]
+generic_array = ["artist name", [["start of career", "==", 2006]]]
 #generic_array = ["Artist Name", [["Location", "==", "Canada"], ["Name", "==", "Drake"]]]
 
 #compound_generic_array = ["Artist Name", "Location"]
-song_array = ["Artist Name", [["Songs", "==", "Beat it"]]]
-genre_array = ["Artist Name", [["Genre", "==", "Pop"]]]
+song_array = ["all", [["songs", "==", "beat it"]]]
+genre_array = ["artist name", [["genre", "==", "pop"]]]
 
 
 # function for user data
@@ -30,7 +30,7 @@ def querying_user_data(user_data):
         queries = ""
 
         if queries:
-            if conditions[0] == "Songs" or conditions[0] == "Genre":
+            if conditions[0] == "songs" or conditions[0] == "genre":
                 if conditions[1] == "==":
                     queries = queries.where(filter=FieldFilter("`" + conditions[0] + "`", "array_contains_any", [conditions[2]]))
                 else:
@@ -38,7 +38,7 @@ def querying_user_data(user_data):
             else:
                 queries = queries.where(filter=FieldFilter("`" + conditions[0] + "`", conditions[1], conditions[2]))
         else:
-            if conditions[0] == "Songs" or conditions[0] == "Genre":
+            if conditions[0] == "songs" or conditions[0] == "genre":
                 if conditions[1] == "==":
                     queries = (music_ref
                            .where(filter=FieldFilter("`" + conditions[0] + "`", "array_contains_any", [conditions[2]])))
@@ -56,13 +56,22 @@ def querying_user_data(user_data):
         query_dict = query.to_dict()
         #print(query_dict)
         if user_data[0] == 'all':
-            print(query_dict)
+            for key in query_dict:
+                if key != "end of career" and key != "start of career":
+                    if isinstance(query_dict[key], str):
+                        print(key.capitalize() + ": " + query_dict[key].title())
+                    elif isinstance(query_dict[key], list):
+                        capitalized_list = [word.title() for word in query_dict[key]]
+                        print(key.capitalize() + ": " + str(capitalized_list))
+                    else:
+                        print(key.capitalize() + ": " + str(query_dict[key]))
+                elif key == "end of career" or key == "start of career":
+                    print(key.capitalize() + ": " + str(query_dict[key]))
         else:
-            print(query_dict[user_data[0]])
+            print(query_dict[user_data[0]].title())
 
 
 
 
 
-
-querying_user_data(generic_array)
+querying_user_data(song_array)
