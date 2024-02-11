@@ -16,7 +16,7 @@ generic_array = ["artist name", [["start of career", "==", 2006]]]
 #generic_array = ["Artist Name", [["Location", "==", "Canada"], ["Name", "==", "Drake"]]]
 
 #compound_generic_array = ["Artist Name", "Location"]
-song_array = ["all", [["songs", "==", "beat it"]]]
+song_array = ["songs", [["songs", "==", "beat it"]]]
 genre_array = ["artist name", [["genre", "==", "pop"]]]
 
 
@@ -68,7 +68,11 @@ def querying_user_data(user_data):
                 elif key == "end of career" or key == "start of career":
                     print(key.capitalize() + ": " + str(query_dict[key]))
         else:
-            print(query_dict[user_data[0]].title())
+            if isinstance(query_dict[user_data[0]], str):
+                print(user_data[0].capitalize() + ": " + query_dict[user_data[0]].title())
+            elif isinstance(query_dict[user_data[0]], list):
+                capitalized_list = [word.title() for word in query_dict[user_data[0]]]
+                print(user_data[0].capitalize() + ": " + str(capitalized_list))
 
 
 
