@@ -127,6 +127,7 @@ def quote_remover(mylist):
             finalQuery.append(x.replace("'", "").replace('"', ''))
     return finalQuery
 
+
 # the following code runs the code above
 def main():
     looper = True
