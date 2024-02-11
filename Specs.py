@@ -9,15 +9,6 @@ def get_user_input():
 def parse_query_double_list(user_input):
     parsed_input = user_input.split(" ")
     print(parsed_input)
-    # if len(parsed_input) % 2 != 0:
-    #     print("your queries should not have an odd number of words, verify that you have finished your statement")
-    #     return None
-    # if len(parsed_input) == 4:
-    #     if parsed_input[3] == "if":
-    #         print("your if you have an if statement you must also have a conditional statement")
-    #     else:
-    #         print("if you wish to narrow down your query use an if statement")
-    #     return None
     query_list = []
     for x in range(0, len(parsed_input) - 1, 2):
         query_list.append([parsed_input[x], parsed_input[x+1]])
@@ -35,14 +26,19 @@ def double_list_validator(query_list):
                 (x[0] == 'all') or (x[0] == 'help') or (x[0] == 'quit'):
             if key_num == 0 and x[0] == "get":
                 isvalid = True
+                print("has get")
             if key_num == 1 and x[0] != "if":
                 isvalid = False
+                print("if in wrong place")
             if key_num == 2 and x[0] != ">>" and x[0] != "<<" and x[0] != "<=" and x[0] != ">=" and x[0] != "==":
                 isvalid = False
+                print("comparison operator in wrong place")
             if x[0] == "&&" and (key_num + 1) % 2 != 0 and key_num > 3:
                 isvalid = False
-            if x[0] != ">>" and x[0] != "<<" and x[0] != "<=" and x[0] != ">=" and x[0] != "==" and (key_num+1) % 2 == 0 and key_num > 4:
+                print("&& in wrong place")
+            if x[0] != ">>" and x[0] != "<<" and x[0] != "<=" and x[0] != ">=" and x[0] != "==" and (key_num+1) % 2 != 0 and key_num > 4:
                 isvalid = False
+                print("other thing")
         else:
             isvalid = False
         key_num = key_num + 1
@@ -92,7 +88,7 @@ def query_validater(dictionary_query):
         else:
             isvalid = False
         key_num = key_num + 1
-
+    print("test")
     return isvalid
 
 
@@ -134,32 +130,13 @@ def pass_query(parse, previous=None):
     x = 0
     for y in range(conditional_statements):
         x_counter = 0
-        while x_counter < conditional_statements + 1:
+        while x_counter < 3:
             adder = mod_parse[1:][x]
             finalFinalList[1:][y].append(adder)
             x_counter = x_counter + 1
             x = x + 1
+            print(finalFinalList)
     print(finalFinalList)
-    # looper = 0
-    # while looper <= 2:
-    #     adder = mod_parse[1:][looper]
-    #     finalList[7].append(adder)
-    #     looper = looper + 1
-
-
-    #for x in mod_parse[1:]:
-
-    # newList1 = []
-    # newList2 =[]
-    # finalList = [mod_parse[0], newList1, newList2]
-    # i = 0
-    # for x in mod_parse[1:]:
-    #     if i <= 2:
-    #         newList1.append(x)
-    #     if i > 2:
-    #         newList2.append(x)
-    #     i = i + 1
-    #print(finalList)
     return finalFinalList
 
 
@@ -188,9 +165,8 @@ while looper:
         looper = False
     else:
         parse = parse_query_double_list(user_input)
+        print(double_list_validator(parse))
         if double_list_validator(parse):
-        #parse = parse_query(user_input)
-            print(double_list_validator(parse))
             print(parse)
             passer = pass_query(parse)
             print(passer)
