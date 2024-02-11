@@ -1,6 +1,7 @@
 # This function gets the users input and returns it
 def get_user_input():
     user_input = input(">> ")
+    user_input = user_input.lower()
     return user_input
 
 
