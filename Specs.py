@@ -118,6 +118,10 @@ def pass_query(parse):
             x = x + 1
     return finalList
 
+
+# A function that takes in a list and searches through it to remove all quotes so that it is better formatted
+# params list
+# returns a list
 def quote_remover(mylist):
     finalQuery = []
     for x in mylist:
