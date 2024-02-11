@@ -2,9 +2,6 @@ import firebase_admin
 from firebase_admin import credentials, firestore
 import json
 
-
-
-
 # Delete old firestore
 #Source: Firebase Documentation
 def delete_collection(coll_ref, batch_size):
