@@ -18,8 +18,8 @@ generic_array = ["artist name", [["location", "==", "canada"], ["genre", "==", "
 # function for user data
 def querying_user_data(user_data):
     # Set up Firestore
-    cred = credentials.Certificate('soft-eng-warmup-a838c198caa2.json')
-    app = firebase_admin.initialize_app(cred)
+    # cred = credentials.Certificate('soft-eng-warmup-a838c198caa2.json')
+    # app = firebase_admin.initialize_app(cred)
     db = firestore.client()
 
     music_ref = db.collection("test-music")
@@ -86,5 +86,5 @@ def querying_user_data(user_data):
         print(f"{user_data[0].capitalize()}s: {list_info}")
 
 
-querying_user_data(generic_array)
+#querying_user_data(generic_array)
 
