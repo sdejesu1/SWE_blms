@@ -12,7 +12,7 @@ from google.cloud.firestore_v1 import FieldFilter
 #
 # #compound_generic_array = ["Artist Name", "Location"]
 # song_array = ["Artist Name", [["Songs", "==", "Beat it"]]]
-#genre_array = ["artist name", [["genre", "==", "pop"]]]
+genre_array = ["artist name"]
 
 
 # function for user data
@@ -29,29 +29,32 @@ def querying_user_data(user_data):
 
     queries = ""
     #user_data = [i.lower() for i in user_data[1:]]
-    for conditions in user_data[1:]:
+    if len(user_data) > 1:
+        for conditions in user_data[1:]:
 
-        if queries:
-            if conditions[0] == "songs" or conditions[0] == "genre":
-                if conditions[1] == "==":
-                    queries = queries.where(filter=FieldFilter("`" + conditions[0] + "`", "array_contains_any", [conditions[2]]))
+            if queries:
+                if conditions[0] == "songs" or conditions[0] == "genre":
+                    if conditions[1] == "==":
+                        queries = queries.where(filter=FieldFilter("`" + conditions[0] + "`", "array_contains_any", [conditions[2]]))
+                    else:
+                        queries = queries.where(filter=FieldFilter("`" + conditions[0] + "`", "not in", [conditions[2]]))
                 else:
-                    queries = queries.where(filter=FieldFilter("`" + conditions[0] + "`", "not in", [conditions[2]]))
+                    queries = queries.where(filter=FieldFilter("`" + conditions[0] + "`", conditions[1], conditions[2]))
             else:
-                queries = queries.where(filter=FieldFilter("`" + conditions[0] + "`", conditions[1], conditions[2]))
-        else:
-            if conditions[0] == "songs" or conditions[0] == "genre":
-                if conditions[1] == "==":
-                    queries = (music_ref
-                           .where(filter=FieldFilter("`" + conditions[0] + "`", "array_contains_any", [conditions[2]])))
+                if conditions[0] == "songs" or conditions[0] == "genre":
+                    if conditions[1] == "==":
+                        queries = (music_ref
+                               .where(filter=FieldFilter("`" + conditions[0] + "`", "array_contains_any", [conditions[2]])))
+                    else:
+                        queries = queries.where(filter=FieldFilter("`" + conditions[0] + "`", "not in", [conditions[2]]))
                 else:
-                    queries = queries.where(filter=FieldFilter("`" + conditions[0] + "`", "not in", [conditions[2]]))
-            else:
-                queries = (
-                    music_ref
-                    .where(filter=FieldFilter("`" + conditions[0] + "`", conditions[1], conditions[2]))
-                )
-        #print(queries)
+                    queries = (
+                        music_ref
+                        .where(filter=FieldFilter("`" + conditions[0] + "`", conditions[1], conditions[2]))
+                    )
+            #print(queries)
+    else:
+        queries = music_ref
 
     queries = queries.stream()
     list_info = []
@@ -85,6 +88,5 @@ def querying_user_data(user_data):
         list_info = list(set(list_info))
         print(f"{user_data[0].capitalize()}s: {list_info}")
 
-
-#querying_user_data(generic_array)
+querying_user_data(genre_array)
 
