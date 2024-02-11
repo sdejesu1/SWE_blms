@@ -35,7 +35,7 @@ def double_list_validator(query_list):
     key_num = 0
     for x in query_list:
         if (x[0] == 'get') or (x[0] == 'if') or (x[0] == '==') or (x[0] == '&&') or \
-                (x[0] == '>>') or (x[0] == '<<') or (x[0] == '<=') or (x[0] == '>=') or \
+                (x[0] == '>') or (x[0] == '<') or (x[0] == '<=') or (x[0] == '>=') or \
                 (x[0] == 'all') or (x[0] == 'help') or (x[0] == 'quit'):
             if key_num == 0 and x[0] == "get":
                 isvalid = True
@@ -47,12 +47,12 @@ def double_list_validator(query_list):
                 print('Alternatively you can just limit your query to a get statement only')
                 print('EX: get artist_name')
                 print('This will give you all the artists names')
-            if key_num == 2 and x[0] != ">>" and x[0] != "<<" and x[0] != "<=" and x[0] != ">=" and x[0] != "==":
+            if key_num == 2 and x[0] != ">" and x[0] != "<" and x[0] != "<=" and x[0] != ">=" and x[0] != "==":
                 isvalid = False
                 print('ERROR')
                 print("Query has its comparison operator in the wrong place or is missing")
                 print('comparison operators are considered any of the following: ')
-                print('"<<", ">>", "<=", ">=", "=="')
+                print('"<", ">", "<=", ">=", "=="')
                 print('Please put your comparison operators following an if statement or an and statement')
                 print('Make sure comparison operators are between two values')
                 print('EX: get artist_name if start_date <= 1990 && end_date >= 2010')
@@ -63,7 +63,7 @@ def double_list_validator(query_list):
                 print('&& operators should be used to tie two comparison operations together following an "if" '
                       'statement')
                 print("EX: get artist_name if start_date <= 1990 && end_date >= 2000")
-            if x[0] != ">>" and x[0] != "<<" and x[0] != "<=" and x[0] != ">=" and x[0] != "==" and (
+            if x[0] != ">" and x[0] != "<" and x[0] != "<=" and x[0] != ">=" and x[0] != "==" and (
                     key_num + 1) % 2 != 0 and key_num > 4:
                 isvalid = False
                 print("An unexpected error has occurred")
@@ -98,7 +98,7 @@ def pass_query(parse):
             mod_parse.append(x[1])
         if x[0] == "&&":
             mod_parse.append(x[1])
-        if x[0] == "==" or x[0] == "<<" or x[0] == ">>" or x[0] == "<=" or x[0] == ">=":
+        if x[0] == "==" or x[0] == "<" or x[0] == ">" or x[0] == "<=" or x[0] == ">=":
             mod_parse.append(x[0])
             mod_parse.append(x[1])
     conditional_statements = 0
@@ -137,6 +137,14 @@ def quote_remover(mylist):
 
 # the following code runs the code above
 def main():
+    #introduction to program
+    print("\nHello All! Welcome to our collection of information about some of spotify's top artists:")
+    #categories and keys
+    print('\nThe Categories are: "Artist Name", "Location", "Songs", "Genre", "Start of Career", and "End of Career"')
+    print('The Keys are: get, if, ==, &&, <, >, <=, >=, all')
+    print('------------------------------')
+    print('Please enter your query now, type "help" to see your options, or "quit" to close the program:')
+
     looper = True
     while looper:
         user_input = get_user_input()
@@ -147,9 +155,9 @@ def main():
             print('Entering "==" checks to see if something is equal to another, this should only be used after an if '
                   'statement')
             print('Entering "&&" allows you to add another if condition to an existing one')
-            print('Entering "<<", ">>", "<=", or ">=" comparing operators allows you to get items that are less than, '
+            print('Entering "<", ">", "<=", or ">=" comparing operators allows you to get items that are less than, '
                   'greater than, less than or equal to, or greater than or equal to')
-            print('Entering "all" allows the user to get all fo the data')
+            print('Entering "all" allows the user to get all of the data')
             print('Entering "help" gives the current menu')
             print('Entering "quit" ends the program')
             print('------------------------------')
