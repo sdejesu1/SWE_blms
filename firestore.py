@@ -37,4 +37,3 @@ for artist in data['spotify_artists']:
     doc_ref.set(artist)
     print(artist)
 
-
