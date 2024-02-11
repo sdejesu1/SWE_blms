@@ -138,7 +138,7 @@ def main():
             print('Entering "&&" allows you to add another if condition to an existing one')
             print('Entering "<<", ">>", "<=", or ">=" comparing operators allows you to get items that are less than, '
                   'greater than, less than or equal to, or greater than or equal to')
-            print('Entering "all" allows the user to get all fo the data')
+            print('Entering "all" allows the user to get all of the data')
             print('Entering "help" gives the current menu')
             print('Entering "quit" ends the program')
             print('------------------------------')
