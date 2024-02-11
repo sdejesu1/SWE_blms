@@ -12,7 +12,7 @@ db = firestore.client()
 music_ref = db.collection("test-music")
 
 # test arrays - remaining test arrays: compound queries (AND)
-generic_array = ["artist name", [["start of career", "==", 2006]]]
+generic_array = ["all", [["start of career", "==", 2006]]]
 #generic_array = ["Artist Name", [["Location", "==", "Canada"], ["Name", "==", "Drake"]]]
 
 #compound_generic_array = ["Artist Name", "Location"]
@@ -56,6 +56,7 @@ def querying_user_data(user_data):
         query_dict = query.to_dict()
         #print(query_dict)
         if user_data[0] == 'all':
+            print("\n")
             for key in query_dict:
                 if key != "end of career" and key != "start of career":
                     if isinstance(query_dict[key], str):
@@ -75,7 +76,4 @@ def querying_user_data(user_data):
                 print(user_data[0].capitalize() + ": " + str(capitalized_list))
 
 
-
-
-
-querying_user_data(song_array)
+querying_user_data(generic_array)
