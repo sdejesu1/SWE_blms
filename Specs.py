@@ -132,9 +132,10 @@ def main():
             print('Entering "all" allows the user to get all fo the data')
             print('Entering "help" gives the current menu')
             print('Entering "quit" ends the program')
+            print('------------------------------')
             print('here are some example queries')
-            print('get artist if name == "aerosmith"')
-            print('get artist if end_date >> 2000 && start_date << 1990')
+            print('get songs if "artists name" == "halsey"')
+            print('get "artists name" if end_date >> 2000 && start_date << 1990')
         elif user_input.lower() == "quit":
             print('Quitting...')
             looper = False
