@@ -1,9 +1,9 @@
+import re
 # This function gets the users input and returns it
 def get_user_input():
     user_input = input(">> ")
     user_input = user_input.lower()
     return user_input
-
 
 # This function parses the users input into a list of lists of two. The first element in the sub list is the key and the
 # second element in the sublist is the item in question this way validation is easier
@@ -11,7 +11,8 @@ def get_user_input():
 # params string user input
 # returns list of lists of two
 def parse_query_double_list(user_input):
-    parsed_input = user_input.split(" ")
+    pattern = re.compile(r'("[^"]+"|\S+)')
+    parsed_input = pattern.findall(user_input)
     query_list = []
     for x in range(0, len(parsed_input) - 1, 2):
         query_list.append([parsed_input[x], parsed_input[x + 1]])
@@ -114,6 +115,14 @@ def pass_query(parse):
             x = x + 1
     return finalList
 
+def quote_remover(mylist):
+    finalQuery = []
+    for x in mylist:
+        if isinstance(x, list):
+            finalQuery.append(quote_remover(x))
+        else:
+            finalQuery.append(x.replace("'", "").replace('"', ''))
+    return finalQuery
 
 # the following code runs the code above
 def main():
@@ -146,6 +155,7 @@ def main():
             if double_list_validator(parse):
                 print("Query is valid")
                 passer = pass_query(parse)
+                passer = quote_remover(passer)
                 print(passer)
 
 
