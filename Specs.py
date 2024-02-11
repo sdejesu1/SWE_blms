@@ -13,7 +13,7 @@ def parse_query_double_list(user_input):
     parsed_input = user_input.split(" ")
     query_list = []
     for x in range(0, len(parsed_input) - 1, 2):
-        query_list.append([parsed_input[x], parsed_input[x+1]])
+        query_list.append([parsed_input[x], parsed_input[x + 1]])
     return query_list
 
 
@@ -58,7 +58,8 @@ def double_list_validator(query_list):
                 print('&& operators should be used to tie two comparison operations together following an "if" '
                       'statement')
                 print("EX: get artist_name if start_date <= 1990 && end_date >= 2000")
-            if x[0] != ">>" and x[0] != "<<" and x[0] != "<=" and x[0] != ">=" and x[0] != "==" and (key_num+1) % 2 != 0 and key_num > 4:
+            if x[0] != ">>" and x[0] != "<<" and x[0] != "<=" and x[0] != ">=" and x[0] != "==" and (
+                    key_num + 1) % 2 != 0 and key_num > 4:
                 isvalid = False
                 print("An unexpected error has occurred")
         else:
@@ -114,30 +115,37 @@ def pass_query(parse):
 
 
 # the following code runs the code above
-looper = True
-while looper:
-    user_input = get_user_input()
-    if user_input.lower() == "help":
-        print('The following are they key words you can use to query with')
-        print('Entering "get" followed by the name of the column you wish to search through')
-        print('Entering "if" after a get statements will return all data that meets the condition you have defined')
-        print('Entering "==" checks to see if something is equal to another, this should only be used after an if '
-              'statement')
-        print('Entering "&&" allows you to add another if condition to an existing one')
-        print('Entering "<<", ">>", "<=", or ">=" comparing operators allows you to get items that are less than, '
-              'greater than, less than or equal to, or greater than or equal to')
-        print('Entering "all" allows the user to get all fo the data')
-        print('Entering "help" gives the current menu')
-        print('Entering "quit" ends the program')
-        print('here are some example queries')
-        print('get artist if name == "aerosmith"')
-        print('get artist if end_date >> 2000 && start_date << 1990')
-    elif user_input.lower() == "quit":
-        print('Quitting...')
-        looper = False
-    else:
-        parse = parse_query_double_list(user_input)
-        print(double_list_validator(parse))
-        if double_list_validator(parse):
-            passer = pass_query(parse)
-            print(passer)
+def main():
+    looper = True
+    while looper:
+        user_input = get_user_input()
+        if user_input.lower() == "help":
+            print('The following are they key words you can use to query with')
+            print('Entering "get" followed by the name of the column you wish to search through')
+            print('Entering "if" after a get statements will return all data that meets the condition you have defined')
+            print('Entering "==" checks to see if something is equal to another, this should only be used after an if '
+                  'statement')
+            print('Entering "&&" allows you to add another if condition to an existing one')
+            print('Entering "<<", ">>", "<=", or ">=" comparing operators allows you to get items that are less than, '
+                  'greater than, less than or equal to, or greater than or equal to')
+            print('Entering "all" allows the user to get all fo the data')
+            print('Entering "help" gives the current menu')
+            print('Entering "quit" ends the program')
+            print('here are some example queries')
+            print('get artist if name == "aerosmith"')
+            print('get artist if end_date >> 2000 && start_date << 1990')
+        elif user_input.lower() == "quit":
+            print('Quitting...')
+            looper = False
+        else:
+            parse = parse_query_double_list(user_input)
+            if not double_list_validator(parse):
+                print("Query is invalid")
+            if double_list_validator(parse):
+                print("Query is valid")
+                passer = pass_query(parse)
+                print(passer)
+
+
+if __name__ == '__main__':
+    main()
