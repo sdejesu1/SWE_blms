@@ -31,7 +31,7 @@ def parse_query_double_list(user_input):
 # params a list of lists of length 2
 # returns a boolean value telling if the query is valid or not
 def double_list_validator(query_list):
-    columnNames = ['artist name', 'location', 'songs', 'genre', 'start of career', 'end of career']
+    columnNames = ["artist name", "location", "songs", "genre", "start of career", "end of career"]
     isvalid = False
     key_num = 0
     ifValidation = True
@@ -101,7 +101,8 @@ def double_list_validator(query_list):
         print('ERROR')
         print('Please make sure your query has valid column names')
         print('Column names are as follows:')
-        print(columnNames)
+        print('"artist name", "location", "songs", "genre", "start of career", "end of career"')
+        print('Make sure each column name is surrounded by double quotation marks ""')
     if ifValidation != True:
         print('ERROR')
         print('Please make sure your query has an "if" statement for the third word in the query')
