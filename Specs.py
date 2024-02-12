@@ -191,7 +191,7 @@ def main():
             print('------------------------------')
             print('here are some example queries')
             print('get songs if "artist name" == "halsey"')
-            print('get "artist name" if end_date >> 2000 && start_date << 1990')
+            print('get "artist name" if "end of career" > 2000 && "start of career" < 1990')
         elif user_input.lower() == "quit":
             print('Quitting...')
             looper = False
