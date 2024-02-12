@@ -31,17 +31,22 @@ def parse_query_double_list(user_input):
 # params a list of lists of length 2
 # returns a boolean value telling if the query is valid or not
 def double_list_validator(query_list):
+    columnNames = ['artist name', 'location', 'songs', 'genre', 'start of career', 'end of career']
     isvalid = False
     key_num = 0
     ifValidation = True
     comparisonValidation = True
     andValidation = True
+    columnNameValid = True
     for x in query_list:
         if (x[0] == 'get') or (x[0] == 'if') or (x[0] == '==') or (x[0] == '&&') or \
                 (x[0] == '>') or (x[0] == '<') or (x[0] == '<=') or (x[0] == '>=') or \
                 (x[0] == 'all') or (x[0] == 'help') or (x[0] == 'quit'):
             if key_num == 0 and x[0] == "get":
                 isvalid = True
+                if x[1] not in columnNames:
+                    isvalid = False
+                    columnNameValid = False
             if key_num == 1 and x[0] != "if":
                 isvalid = False
                 ifValidation = False
@@ -72,8 +77,16 @@ def double_list_validator(query_list):
             if x[0] != ">" and x[0] != "<" and x[0] != "<=" and x[0] != ">=" and x[0] != "==" and (
                     key_num + 1) % 2 != 0 and key_num > 4:
                 isvalid = False
-                comparisonValidation = False
                 print("An unexpected error has occurred")
+            if key_num <= 1:
+                if x[1] not in columnNames:
+                    isvalid = False
+                    columnNameValid = False
+            if key_num > 1 and (key_num+1) % 2 == 0:
+                if x[1] not in columnNames:
+                    isvalid = False
+                    columnNameValid = False
+
         else:
             isvalid = False
             print("An unexpected error has occurred")
@@ -84,6 +97,11 @@ def double_list_validator(query_list):
         print("All queries should have an even number of words")
         print('Check to make sure that all comparison operators are between two items of interest and tied together '
               'with an "&&" operator')
+    if columnNameValid != True:
+        print('ERROR')
+        print('Please make sure your query has valid column names')
+        print('Column names are as follows:')
+        print(columnNames)
     if ifValidation != True:
         print('ERROR')
         print('Please make sure your query has an "if" statement for the third word in the query')
@@ -197,6 +215,7 @@ def main():
             looper = False
         else:
             parse = parse_query_double_list(user_input)
+            parse = quote_remover(parse)
             if double_list_validator(parse):
                 print("Query is valid")
                 passer = pass_query(parse)
