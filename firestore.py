@@ -9,7 +9,6 @@ def delete_collection(coll_ref, batch_size):
     deleted = 0
 
     for doc in docs:
-        print(f"Deleting doc {doc.id} => {doc.get().to_dict()}")
         doc.delete()
         deleted = deleted + 1
 
@@ -22,6 +21,8 @@ def create_database(file_name):
     app = firebase_admin.initialize_app(cred)
     db = firestore.client()
 
+    print("Loading Data from JSON file...")
+
     delete_collection(db.collection("test-music"), 35)
 
     # Open JSON File with explicit encoding
@@ -33,5 +34,6 @@ def create_database(file_name):
         # Assuming 'test-music' is your collection name
         doc_ref = db.collection("test-music").document()
         doc_ref.set(artist)
-        print(artist)
+
+    print("Loading Complete!")
 

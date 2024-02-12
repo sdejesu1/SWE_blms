@@ -1,6 +1,7 @@
-# Import necessary libraries
 import firebase_admin
 from firebase_admin import credentials, firestore
+import json
+
 from google.cloud.firestore_v1 import FieldFilter
 
 # Initialize Firebase Admin SDK
@@ -75,8 +76,8 @@ def querying_user_data(user_data):
                 # Handle specific field data retrieval
                 data = ""
                 for word in query_dict[user_data[0]].split(" "):
-                    data += f"{word.capitalize()}"
-                list_info.append(data)
+                    data += f"{word.capitalize()} "
+                list_info.append(data.strip())
             except AttributeError:
                 for info in query_dict[user_data[0]]:
                     list_info.append(info.capitalize())
