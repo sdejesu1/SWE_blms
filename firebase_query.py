@@ -25,35 +25,20 @@ def querying_user_data(user_data):
     queries = ""  # Initialize queries variable
 
     # Check if user_data contains more than one condition
+    queries = music_ref # If only one condition, set queries to reference the entire collection
     if len(user_data) > 1:
         for conditions in user_data[1:]:
             #Change null to NoneType
             if 'null' in conditions:
                 conditions[conditions.index('null')] = None
 
-            if queries:
-                if conditions[0] == "songs" or conditions[0] == "genre":
-                    if conditions[1] == "==":
-                        queries = queries.where(filter=FieldFilter("`" + conditions[0] + "`", "array_contains_any", [conditions[2]]))
-                    else:
-                        queries = queries.where(filter=FieldFilter("`" + conditions[0] + "`", "not in", [conditions[2]]))
+            if conditions[0] == "songs" or conditions[0] == "genre":
+                if conditions[1] == "==":
+                    queries = queries.where(filter=FieldFilter("`" + conditions[0] + "`", "array_contains_any", [conditions[2]]))
                 else:
-                    queries = queries.where(filter=FieldFilter("`" + conditions[0] + "`", conditions[1], conditions[2]))
+                    queries = queries.where(filter=FieldFilter("`" + conditions[0] + "`", "not in", [conditions[2]]))
             else:
-                if conditions[0] == "songs" or conditions[0] == "genre":
-                    if conditions[1] == "==":
-                        queries = (music_ref
-                               .where(filter=FieldFilter("`" + conditions[0] + "`", "array_contains_any", [conditions[2]])))
-                    else:
-                        queries = queries.where(filter=FieldFilter("`" + conditions[0] + "`", "not in", [conditions[2]]))
-                else:
-                    queries = (
-                        music_ref
-                        .where(filter=FieldFilter("`" + conditions[0] + "`", conditions[1], conditions[2]))
-                    )
-
-    else:
-        queries = music_ref  # If only one condition, set queries to reference the entire collection
+                queries = queries.where(filter=FieldFilter("`" + conditions[0] + "`", conditions[1], conditions[2]))
 
     # Execute queries and process results
     queries = queries.stream()
@@ -99,8 +84,8 @@ if __name__ == "__main__":
     app = firebase_admin.initialize_app(cred)
     # Example usage of querying_user_data function
     # Define user data
-    # For example: ['all', ['artist name', '==', 'Drake']]
-    user_data = ['all', ['end of career', '==', 'null']]
+    # For example: ['all', ['artist name', '==', 'drake']]
+    user_data = ['all', ['end of career', '==', 'null'], ['artist name', '==', 'drake']]
 
     # Call querying_user_data function with user data
     querying_user_data(user_data)
