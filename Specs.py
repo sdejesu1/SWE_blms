@@ -33,6 +33,9 @@ def parse_query_double_list(user_input):
 def double_list_validator(query_list):
     isvalid = False
     key_num = 0
+    ifValidation = True
+    comparisonValidation = True
+    andValidation = True
     for x in query_list:
         if (x[0] == 'get') or (x[0] == 'if') or (x[0] == '==') or (x[0] == '&&') or \
                 (x[0] == '>') or (x[0] == '<') or (x[0] == '<=') or (x[0] == '>=') or \
@@ -41,31 +44,35 @@ def double_list_validator(query_list):
                 isvalid = True
             if key_num == 1 and x[0] != "if":
                 isvalid = False
-                print('ERROR')
-                print('Please make sure your query has an "if" statement for the third word in the query')
-                print('EX: get artist_name if start_date == 1999')
-                print('Alternatively you can just limit your query to a get statement only')
-                print('EX: get artist_name')
-                print('This will give you all the artists names')
+                ifValidation = False
+                # print('ERROR')
+                # print('Please make sure your query has an "if" statement for the third word in the query')
+                # print('EX: get artist_name if start_date == 1999')
+                # print('Alternatively you can just limit your query to a get statement only')
+                # print('EX: get artist_name')
+                # print('This will give you all the artists names')
             if key_num == 2 and x[0] != ">" and x[0] != "<" and x[0] != "<=" and x[0] != ">=" and x[0] != "==":
                 isvalid = False
-                print('ERROR')
-                print("Query has its comparison operator in the wrong place or is missing")
-                print('comparison operators are considered any of the following: ')
-                print('"<", ">", "<=", ">=", "=="')
-                print('Please put your comparison operators following an if statement or an and statement')
-                print('Make sure comparison operators are between two values')
-                print('EX: get artist_name if start_date <= 1990 && end_date >= 2010')
+                comparisonValidation = False
+                # print('ERROR')
+                # print("Query has its comparison operator in the wrong place or is missing")
+                # print('comparison operators are considered any of the following: ')
+                # print('"<", ">", "<=", ">=", "=="')
+                # print('Please put your comparison operators following an if statement or an and statement')
+                # print('Make sure comparison operators are between two values')
+                # print('EX: get artist_name if start_date <= 1990 && end_date >= 2010')
             if x[0] == "&&" and (key_num + 1) % 2 != 0 and key_num > 3:
                 isvalid = False
-                print("ERROR")
-                print("Query has its && operators missing or in the wrong place")
-                print('&& operators should be used to tie two comparison operations together following an "if" '
-                      'statement')
-                print("EX: get artist_name if start_date <= 1990 && end_date >= 2000")
+                andValidation = False
+                # print("ERROR")
+                # print("Query has its && operators missing or in the wrong place")
+                # print('&& operators should be used to tie two comparison operations together following an "if" '
+                #       'statement')
+                # print("EX: get artist_name if start_date <= 1990 && end_date >= 2000")
             if x[0] != ">" and x[0] != "<" and x[0] != "<=" and x[0] != ">=" and x[0] != "==" and (
                     key_num + 1) % 2 != 0 and key_num > 4:
                 isvalid = False
+                comparisonValidation = False
                 print("An unexpected error has occurred")
         else:
             isvalid = False
@@ -77,6 +84,27 @@ def double_list_validator(query_list):
         print("All queries should have an even number of words")
         print('Check to make sure that all comparison operators are between two items of interest and tied together '
               'with an "&&" operator')
+    if ifValidation != True:
+        print('ERROR')
+        print('Please make sure your query has an "if" statement for the third word in the query')
+        print('EX: get artist_name if start_date == 1999')
+        print('Alternatively you can just limit your query to a get statement only')
+        print('EX: get artist_name')
+        print('This will give you all the artists names')
+    if andValidation != True:
+        print("ERROR")
+        print("Query has its && operators missing or in the wrong place")
+        print('&& operators should be used to tie two comparison operations together following an "if" '
+              'statement')
+        print("EX: get artist_name if start_date <= 1990 && end_date >= 2000")
+    if comparisonValidation != True:
+        print('ERROR')
+        print("Query has its comparison operator in the wrong place or is missing")
+        print('comparison operators are considered any of the following: ')
+        print('"<", ">", "<=", ">=", "=="')
+        print('Please put your comparison operators following an if statement or an and statement')
+        print('Make sure comparison operators are between two values')
+        print('EX: get artist_name if start_date <= 1990 && end_date >= 2010')
     return isvalid
 
 
@@ -169,14 +197,14 @@ def main():
             looper = False
         else:
             parse = parse_query_double_list(user_input)
-            if not double_list_validator(parse):
-                print("Query is invalid")
             if double_list_validator(parse):
                 print("Query is valid")
                 passer = pass_query(parse)
                 passer = quote_remover(passer)
                 print(passer)
                 fq.querying_user_data(passer)
+            else:
+                print("Query is invalid")
 
 if __name__ == '__main__':
     firestore.create_database('Music_Artist.json')
