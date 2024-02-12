@@ -173,11 +173,13 @@ def quote_remover(mylist):
     for x in mylist:
         if isinstance(x, list):
             finalQuery.append(quote_remover(x))
+        elif isinstance(x, int):
+            print("hey listen")
+            finalQuery.append(x)
+        elif isinstance(x, str) and x.isdigit():
+            finalQuery.append(int(x))
         else:
-            if x.isdigit():
-                finalQuery.append(int(x))
-            else:
-                finalQuery.append(x.replace("'", "").replace('"', ''))
+            finalQuery.append(x.replace("'", "").replace('"', ''))
     return finalQuery
 
 
@@ -219,7 +221,6 @@ def main():
             if double_list_validator(parse):
                 print("Query is valid")
                 passer = pass_query(parse)
-                passer = quote_remover(passer)
                 print(passer)
                 fq.querying_user_data(passer)
             else:
