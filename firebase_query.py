@@ -27,7 +27,10 @@ def querying_user_data(user_data):
     # Check if user_data contains more than one condition
     if len(user_data) > 1:
         for conditions in user_data[1:]:
-            # Construct query based on conditions
+            #Change null to NoneType
+            if 'null' in conditions:
+                conditions[conditions.index('null')] = None
+
             if queries:
                 if conditions[0] == "songs" or conditions[0] == "genre":
                     if conditions[1] == "==":
@@ -79,11 +82,11 @@ def querying_user_data(user_data):
                     data += f"{word.capitalize()} "
                 list_info.append(data.strip())
             except AttributeError:
-                if isinstance(query_dict[user_data[0]], int):
-                    list_info.append(query_dict[user_data[0]])
-                else:
+                try:
                     for info in query_dict[user_data[0]]:
                         list_info.append(info.capitalize())
+                except TypeError:
+                    list_info.append(query_dict[user_data[0]])
 
     if user_data[0] != 'all':
         # Display results for specific field
@@ -92,10 +95,12 @@ def querying_user_data(user_data):
 
 # Entry point of the program
 if __name__ == "__main__":
+    cred = credentials.Certificate('soft-eng-warmup-a838c198caa2.json')
+    app = firebase_admin.initialize_app(cred)
     # Example usage of querying_user_data function
     # Define user data
     # For example: ['all', ['artist name', '==', 'Drake']]
-    user_data = ['all', ['artist name', '==', 'Drake']]
+    user_data = ['all', ['end of career', '==', 'null']]
 
     # Call querying_user_data function with user data
     querying_user_data(user_data)
