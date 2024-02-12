@@ -79,8 +79,11 @@ def querying_user_data(user_data):
                     data += f"{word.capitalize()} "
                 list_info.append(data.strip())
             except AttributeError:
-                for info in query_dict[user_data[0]]:
-                    list_info.append(info.capitalize())
+                if isinstance(query_dict[user_data[0]], int):
+                    list_info.append(query_dict[user_data[0]])
+                else:
+                    for info in query_dict[user_data[0]]:
+                        list_info.append(info.capitalize())
 
     if user_data[0] != 'all':
         # Display results for specific field
