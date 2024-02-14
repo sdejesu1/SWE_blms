@@ -85,7 +85,7 @@ if __name__ == "__main__":
     # Example usage of querying_user_data function
     # Define user data
     # For example: ['all', ['artist name', '==', 'drake']]
-    user_data = ['all', ['end of career', '==', 'null'], ['artist name', '==', 'drake']]
+    user_data = ['artist name', ['start of career', '<', 2007], ['end of career', '==', 'null']]
 
     # Call querying_user_data function with user data
     querying_user_data(user_data)
