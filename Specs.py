@@ -32,6 +32,7 @@ def parse_query_double_list(user_input):
 # returns a boolean value telling if the query is valid or not
 def double_list_validator(query_list):
     columnNames = ["artist name", "location", "songs", "genre", "start of career", "end of career"]
+    columnNamesAndALL = ["artist name", "location", "songs", "genre", "start of career", "end of career", "all"]
     isvalid = False
     key_num = 0
     ifValidation = True
@@ -39,7 +40,7 @@ def double_list_validator(query_list):
     andValidation = True
     columnNameValid = True
     for x in query_list:
-        # checks to make sure that all of the first elements in the sublist are a keyword
+        # checks to make sure that all the first elements in the sublist are a keyword
         if (x[0] == 'get') or (x[0] == 'if') or (x[0] == '==') or (x[0] == '&&') or \
                 (x[0] == '>') or (x[0] == '<') or (x[0] == '<=') or (x[0] == '>=') or \
                 (x[0] == 'all') or (x[0] == 'help') or (x[0] == 'quit'):
@@ -47,7 +48,7 @@ def double_list_validator(query_list):
             if key_num == 0 and x[0] == "get":
                 isvalid = True
                 # if the element following the keyword is not one of the column names set false values
-                if x[1] not in columnNames:
+                if x[1] not in columnNamesAndALL:
                     isvalid = False
                     columnNameValid = False
             # Checks to see that any key in the second location of the list of lists is the value "if" if not it sets
@@ -72,7 +73,7 @@ def double_list_validator(query_list):
                 print("An unexpected error has occurred")
             # Checks to make sure that any non key value is one that is in our column names list
             if key_num <= 1:
-                if x[1] not in columnNames:
+                if x[1] not in columnNamesAndALL:
                     isvalid = False
                     columnNameValid = False
             if key_num > 1 and (key_num+1) % 2 == 0:
