@@ -39,45 +39,38 @@ def double_list_validator(query_list):
     andValidation = True
     columnNameValid = True
     for x in query_list:
+        # checks to make sure that all of the first elements in the sublist are a keyword
         if (x[0] == 'get') or (x[0] == 'if') or (x[0] == '==') or (x[0] == '&&') or \
                 (x[0] == '>') or (x[0] == '<') or (x[0] == '<=') or (x[0] == '>=') or \
                 (x[0] == 'all') or (x[0] == 'help') or (x[0] == 'quit'):
+            # Checks to make sure that the keyword "get" is in the right location
             if key_num == 0 and x[0] == "get":
                 isvalid = True
+                # if the element following the keyword is not one of the column names set false values
                 if x[1] not in columnNames:
                     isvalid = False
                     columnNameValid = False
+            # Checks to see that any key in the second location of the list of lists is the value "if" if not it sets
+            # values to false
             if key_num == 1 and x[0] != "if":
                 isvalid = False
                 ifValidation = False
-                # print('ERROR')
-                # print('Please make sure your query has an "if" statement for the third word in the query')
-                # print('EX: get artist_name if start_date == 1999')
-                # print('Alternatively you can just limit your query to a get statement only')
-                # print('EX: get artist_name')
-                # print('This will give you all the artists names')
+            # Checks to make sure that any key in the third location of the list of lists is one of the comparison
+            # operators
             if key_num == 2 and x[0] != ">" and x[0] != "<" and x[0] != "<=" and x[0] != ">=" and x[0] != "==":
                 isvalid = False
                 comparisonValidation = False
-                # print('ERROR')
-                # print("Query has its comparison operator in the wrong place or is missing")
-                # print('comparison operators are considered any of the following: ')
-                # print('"<", ">", "<=", ">=", "=="')
-                # print('Please put your comparison operators following an if statement or an and statement')
-                # print('Make sure comparison operators are between two values')
-                # print('EX: get artist_name if start_date <= 1990 && end_date >= 2010')
+            # Checks to make sure that any "&&" key is in an even number location greater than 3 and sets validators
             if x[0] == "&&" and (key_num + 1) % 2 != 0 and key_num > 3:
                 isvalid = False
                 andValidation = False
-                # print("ERROR")
-                # print("Query has its && operators missing or in the wrong place")
-                # print('&& operators should be used to tie two comparison operations together following an "if" '
-                #       'statement')
-                # print("EX: get artist_name if start_date <= 1990 && end_date >= 2000")
+            # Checks to make sure that any comparison operator is in an even number location greater than 4 and sets the
+            # validators
             if x[0] != ">" and x[0] != "<" and x[0] != "<=" and x[0] != ">=" and x[0] != "==" and (
                     key_num + 1) % 2 != 0 and key_num > 4:
                 isvalid = False
                 print("An unexpected error has occurred")
+            # Checks to make sure that any non key value is one that is in our column names list
             if key_num <= 1:
                 if x[1] not in columnNames:
                     isvalid = False
