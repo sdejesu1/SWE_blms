@@ -8,6 +8,18 @@ Use `pip` (or `pip3`), Python's package manager to install firebase-admin in you
 
     pip install --upgrade firebase-admin
 
+To set up firebase using json file, enter into command line:
+
+    python admin.py Music_Artists.json
+    or
+    python admin.py
+
+To run program:
+
+    python main.py
+
+
+
 ## Description of Data
 
 For this assignment we decided on Musical Artists as our data. The information was sourced from Spotify's Top Artists of 2023, and we selected from the fields we wanted to use. In this project our fields are:

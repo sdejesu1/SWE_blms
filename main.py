@@ -1,5 +1,5 @@
 import re
-import firestore
+import admin
 import firebase_query as fq
 
 # This function gets the users input and returns it
@@ -222,5 +222,4 @@ def main():
                 print("Query is invalid")
 
 if __name__ == '__main__':
-    firestore.create_database('Music_Artist.json')
     main()
