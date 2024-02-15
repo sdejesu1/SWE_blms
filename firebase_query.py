@@ -2,10 +2,12 @@ import firebase_admin
 from firebase_admin import credentials, firestore
 import json
 
-from google.api_core.exceptions import InvalidArgument
+from google.api_core.exceptions import InvalidArgument, FailedPrecondition
 from google.cloud.firestore_v1 import FieldFilter
 
-# Initialize Firebase Admin SDK
+# Set up Firestore
+cred = credentials.Certificate('soft-eng-warmup-a838c198caa2.json')
+app = firebase_admin.initialize_app(cred)
 
 # Function to query user data from Firestore
 def querying_user_data(user_data):
@@ -83,6 +85,8 @@ def querying_user_data(user_data):
         print(" [Firebase does not allow inequality filters on multiple properties] ")
     except AttributeError:
         print(" [Invalid Attributes] ")
+    except FailedPrecondition:
+        print(" [Query requires an index, try querying in a different order or stop]")
 
 
 # Entry point of the program

@@ -1,6 +1,7 @@
 import firebase_admin
 from firebase_admin import credentials, firestore
 import json
+import sys
 
 # Delete old firestore
 #Source: Firebase Documentation
@@ -26,7 +27,7 @@ def create_database(file_name):
     delete_collection(db.collection("test-music"), 35)
 
     # Open JSON File with explicit encoding
-    with open('Music_Artists.json', 'r', encoding='utf-8') as file:
+    with open(file_name, 'r', encoding='utf-8') as file:
         data = json.load(file)
 
     # Add data to Firestore
@@ -36,4 +37,10 @@ def create_database(file_name):
         doc_ref.set(artist)
 
     print("Loading Complete!")
+
+if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        create_database(sys.argv[1])
+    else:
+        create_database("Music_Artists.json")
 
